@@ -1,11 +1,12 @@
 let device;
+let context;
 
 async function setup() {
     const patchExportURL = "patch.export.json";
 
     // Create AudioContext
     const WAContext = window.AudioContext || window.webkitAudioContext;
-    const context = new WAContext();
+    context = new WAContext();
 
     // Create gain node and connect it to audio output
     const outputNode = context.createGain();
@@ -42,7 +43,7 @@ async function setup() {
         }
         return;
     }
-    
+    /*
     // (Optional) Fetch the dependencies
     let dependencies = [];
     try {
@@ -52,7 +53,7 @@ async function setup() {
         // Prepend "export" to any file dependenciies
         dependencies = dependencies.map(d => d.file ? Object.assign({}, d, { file: "export/" + d.file }) : d);
     } catch (e) {}
-
+    */
     // Create the device
     try {
         device = await RNBO.createDevice({ context, patcher });
@@ -65,9 +66,13 @@ async function setup() {
         return;
     }
 
+    /*
+
     // (Optional) Load the samples
     if (dependencies.length)
         await device.loadDataBufferDependencies(dependencies);
+
+    */
 
     // Connect the device to the web audio graph
     device.node.connect(outputNode);

@@ -1,7 +1,5 @@
 function setup(){
-
-
-
+    
     var cnv = createCanvas(400, 400);
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
@@ -43,4 +41,9 @@ function draw(){
     text("WaveSpeed: " + map(mouseX, 0, width, 0, 1), width*0.5, 100);
     text("SpeedRandom: " + map(mouseY, 0, height, 0, 1), width*0.5, 200);
 
+    //cnv.mousePressed(audioResume);
+}
+
+function mousePressed(){
+    context.resume();
 }
